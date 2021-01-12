@@ -2,12 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"write_gh_template": "00_core.ipynb",
-         "get_last_tag": "00_core.ipynb",
-         "get_commit_msgs": "00_core.ipynb",
-         "get_config": "00_core.ipynb",
-         "get_release_version": "00_core.ipynb",
-         "add_pull_request_link": "00_core.ipynb"}
+index = {"write_gh_template": "00_gh.ipynb",
+         "get_last_tag": "00_gh.ipynb",
+         "get_commit_msgs": "00_gh.ipynb",
+         "get_config": "00_gh.ipynb",
+         "get_release_version": "00_gh.ipynb",
+         "add_pull_request_link": "00_gh.ipynb",
+         "release_report": "00_gh.ipynb",
+         "get_token": "00_gh.ipynb",
+         "make_gh_release": "00_gh.ipynb"}
 
 modules = ["gh.py"]
 

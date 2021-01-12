@@ -1,9 +1,9 @@
 gh_categories:
     - title: "### Bugfixes:"
-        keyword: "[FIX]"
+      keyword: "[FIX]"
     - title: "### New features:"
-        keyword: "[FEA]"
+      keyword: "[FEA]"
     - title: "### Documentation:"
-        keyword: "[DOC]"
+      keyword: "[DOC]"
     - title: "### Refactoring / Maintenance:"
-        keyword: "[MNT]"
+      keyword: "[MNT]"
