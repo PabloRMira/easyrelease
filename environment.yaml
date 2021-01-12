@@ -1,0 +1,8 @@
+name: easyrelease
+channels:
+  - defaults
+  - conda-forge
+  - fastai
+dependencies:
+  - python=3.7
+  - nbdev=1.1.5
