@@ -16,7 +16,8 @@ index = {"write_gh_template": "00_gh.ipynb",
          "check_project_root": "04_utils.ipynb",
          "read_credentials": "04_utils.ipynb",
          "get_config": "04_utils.ipynb",
-         "get_template": "04_utils.ipynb"}
+         "get_template": "04_utils.ipynb",
+         "update_gitignore": "04_utils.ipynb"}
 
 modules = ["gh.py",
            "utils.py"]
