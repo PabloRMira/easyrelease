@@ -1,4 +1,7 @@
-# nbdev template
+# easyrelease
+> Tools to automate releases to GitHub and conda
 
-Use this template to more easily create your nbdev project.
 
+## How to install
+
+## How to use
