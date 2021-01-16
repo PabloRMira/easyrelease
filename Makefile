@@ -21,6 +21,9 @@ docs: $(SRC)
 test:
 	nbdev_test_nbs
 
+prepush: 
+	nbdev_build_lib && nbdev_test_nbs && nbdev_build_docs
+
 release: pypi
 	nbdev_conda_package
 	nbdev_bump_version

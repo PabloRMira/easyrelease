@@ -10,6 +10,8 @@ _tmp*
 tmp*
 tags
 
+.gh-credentials
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

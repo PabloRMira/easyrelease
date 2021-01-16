@@ -5,14 +5,21 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"write_gh_template": "00_gh.ipynb",
          "get_last_tag": "00_gh.ipynb",
          "get_commit_msgs": "00_gh.ipynb",
-         "get_config": "00_gh.ipynb",
-         "get_release_version": "00_gh.ipynb",
          "add_pull_request_link": "00_gh.ipynb",
          "release_report": "00_gh.ipynb",
-         "get_token": "00_gh.ipynb",
-         "make_gh_release": "00_gh.ipynb"}
+         "get_gh_credentials": "00_gh.ipynb",
+         "get_tags": "00_gh.ipynb",
+         "get_gh_config": "00_gh.ipynb",
+         "make_gh_release": "00_gh.ipynb",
+         "make_changelog": "00_gh.ipynb",
+         "check_git_dir": "04_utils.ipynb",
+         "check_project_root": "04_utils.ipynb",
+         "read_credentials": "04_utils.ipynb",
+         "get_config": "04_utils.ipynb",
+         "get_template": "04_utils.ipynb"}
 
-modules = ["gh.py"]
+modules = ["gh.py",
+           "utils.py"]
 
 doc_url = "https://PabloRMira.github.io/easyrelease/"
 
