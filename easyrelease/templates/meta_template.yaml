@@ -1,0 +1,19 @@
+package:
+  name: name
+  version: version
+
+source:
+  path: ../.
+
+build:
+  noarch: python
+  number: 0
+
+requirements:
+  build: requirements
+  run: requirements
+
+about:
+  home: home
+  license: license
+  summary: summary

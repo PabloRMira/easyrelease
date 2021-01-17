@@ -2,7 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"write_gh_template": "00_gh.ipynb",
+index = {"get_repo_name": "00_gh.ipynb",
+         "get_base_repo_url": "00_gh.ipynb",
+         "write_gh_template": "00_gh.ipynb",
          "get_last_tag": "00_gh.ipynb",
          "get_commit_msgs": "00_gh.ipynb",
          "add_pull_request_link": "00_gh.ipynb",
@@ -12,14 +14,19 @@ index = {"write_gh_template": "00_gh.ipynb",
          "get_gh_config": "00_gh.ipynb",
          "make_gh_release": "00_gh.ipynb",
          "make_changelog": "00_gh.ipynb",
+         "init_configs": "03_cli.ipynb",
          "check_git_dir": "04_utils.ipynb",
          "check_project_root": "04_utils.ipynb",
          "read_credentials": "04_utils.ipynb",
          "get_config": "04_utils.ipynb",
          "get_template": "04_utils.ipynb",
-         "update_gitignore": "04_utils.ipynb"}
+         "update_gitignore": "04_utils.ipynb",
+         "write_settings_ini": "04_utils.ipynb",
+         "write_setup_py": "04_utils.ipynb",
+         "write_conda_build_scripts": "04_utils.ipynb"}
 
 modules = ["gh.py",
+           "cli.py",
            "utils.py"]
 
 doc_url = "https://PabloRMira.github.io/easyrelease/"
