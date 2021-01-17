@@ -14,6 +14,9 @@ index = {"get_repo_name": "00_gh.ipynb",
          "get_gh_config": "00_gh.ipynb",
          "make_gh_release": "00_gh.ipynb",
          "make_changelog": "00_gh.ipynb",
+         "read_meta_template": "02_conda.ipynb",
+         "update_meta_yaml": "02_conda.ipynb",
+         "build_conda_package": "02_conda.ipynb",
          "init_configs": "03_cli.ipynb",
          "check_git_dir": "04_utils.ipynb",
          "check_project_root": "04_utils.ipynb",
@@ -23,9 +26,11 @@ index = {"get_repo_name": "00_gh.ipynb",
          "update_gitignore": "04_utils.ipynb",
          "write_settings_ini": "04_utils.ipynb",
          "write_setup_py": "04_utils.ipynb",
-         "write_conda_build_scripts": "04_utils.ipynb"}
+         "write_conda_build_scripts": "04_utils.ipynb",
+         "get_conda_env_packages": "04_utils.ipynb"}
 
 modules = ["gh.py",
+           "conda.py",
            "cli.py",
            "utils.py"]
 

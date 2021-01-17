@@ -4,7 +4,13 @@ __all__ = ['init_configs']
 
 # Cell
 from fastcore.script import call_parse, Param
-from .utils import check_project_root, write_settings_ini, write_setup_py, write_conda_build_scripts
+from .utils import (
+    check_project_root,
+    write_settings_ini,
+    write_setup_py,
+    write_conda_build_scripts,
+    update_gitignore
+)
 from .gh import write_gh_template
 
 # Cell
@@ -16,6 +22,7 @@ def init_configs(project_type: Param(help="Either application or package")):
         raise Exception(f"Input project_type {project_type} is not valid")
     write_gh_template()
     write_settings_ini(project_type)
+    update_gitignore()
     if project_type == "package":
         write_setup_py()
         write_conda_build_scripts()
