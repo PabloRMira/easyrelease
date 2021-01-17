@@ -2,6 +2,7 @@
   "easyrelease": {
     "Overview": "/",
     "gh": "gh.html",
+    "cli": "cli.html",
     "utils": "utils.html"
   }
 }

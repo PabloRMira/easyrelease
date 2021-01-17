@@ -1,5 +1,5 @@
 # easyrelease
-> Tools to automate releases to GitHub and conda
+> Automate your GitHub, pypi and conda releases
 
 
 ## How to install
