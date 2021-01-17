@@ -27,7 +27,8 @@ index = {"get_repo_name": "00_gh.ipynb",
          "write_settings_ini": "04_utils.ipynb",
          "write_setup_py": "04_utils.ipynb",
          "write_conda_build_scripts": "04_utils.ipynb",
-         "get_conda_env_packages": "04_utils.ipynb"}
+         "get_conda_env_packages": "04_utils.ipynb",
+         "get_anaconda_credentials": "04_utils.ipynb"}
 
 modules = ["gh.py",
            "conda.py",

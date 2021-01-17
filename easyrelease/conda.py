@@ -5,7 +5,13 @@ __all__ = ['read_meta_template', 'update_meta_yaml', 'build_conda_package']
 # Cell
 import os
 import yaml
-from .utils import check_project_root, get_template, get_config, get_conda_env_packages
+from .utils import (
+    check_project_root,
+    get_template,
+    get_config,
+    get_conda_env_packages,
+    get_anaconda_credentials
+)
 
 # Cell
 def read_meta_template():
@@ -36,4 +42,8 @@ def update_meta_yaml():
 # Cell
 def build_conda_package():
     "Build conda package"
-    subprocess.run(["conda-build", "conda-recipe", "--output-folder", "./conda-bld", "--no-anaconda-upload"])
+    ac_user, ac_token = get_anaconda_credentials()
+    subprocess.run(
+        ["conda-build", "conda-recipe", "--output-folder", "./conda-bld",
+         "--user", ac_user, "--token", ac_token]
+    )
