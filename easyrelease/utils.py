@@ -124,8 +124,8 @@ def write_conda_build_scripts():
 # Cell
 def get_conda_env_packages():
     "Get conda environment packages"
-    packages = subprocess.run(["conda", "list", "-e"], capture_output=True).stdout.decode("utf").splitlines()
-    packages = [p for p in packages if not re.match(r"^#", p) and not re.search("dev", p.split("=")[-1])]
+    packages = subprocess.run(["conda", "list", "--explicit"], capture_output=True).stdout.decode("utf").splitlines()
+    packages = [p for p in packages if not re.match(r"^(?:#|@)", p) and not re.search("dev", p.split("=")[-1])]
     return packages
 
 # Cell
