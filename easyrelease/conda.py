@@ -5,6 +5,7 @@ __all__ = ['read_meta_template', 'update_meta_yaml', 'build_conda_package']
 # Cell
 import os
 import yaml
+import subprocess
 from .utils import (
     check_project_root,
     get_template,
