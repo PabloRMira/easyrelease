@@ -44,6 +44,6 @@ def build_conda_package():
     "Build conda package"
     ac_user, ac_token = get_anaconda_credentials()
     subprocess.run(
-        ["conda-build", "conda-recipe", "--output-folder", "./conda-bld",
-         "--user", ac_user, "--token", ac_token]
+        ["conda-build", "conda-recipe", "--output-folder", "./conda-bld"]
+#         "--user", ac_user, "--token", ac_token]
     )

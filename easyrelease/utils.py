@@ -2,7 +2,7 @@
 
 __all__ = ['check_git_dir', 'check_project_root', 'read_credentials', 'get_config', 'get_template', 'update_gitignore',
            'write_settings_ini', 'write_setup_py', 'write_conda_build_scripts', 'get_conda_env_packages',
-           'get_anaconda_credentials']
+           'get_anaconda_credentials', 'write_init_version']
 
 # Cell
 import os
@@ -125,7 +125,7 @@ def write_conda_build_scripts():
 def get_conda_env_packages():
     "Get conda environment packages"
     packages = subprocess.run(["conda", "list", "-e"], capture_output=True).stdout.decode("utf").splitlines()
-    packages = [p for p in packages if not re.match(r"^#", p)]
+    packages = [p for p in packages if not re.match(r"^#", p) and not re.search("dev", p.split("=")[-1])]
     return packages
 
 # Cell
@@ -137,5 +137,34 @@ def get_anaconda_credentials():
     else:
         config = ConfigParser(delimiters=['='])
         config.read(anacondarc_path)
-        cfg = config['pypi']
+        cfg = config['anaconda']
         return (cfg["username"], cfg["password"])
+
+# Cell
+def write_init_version():
+    "Write __version__ in __init__.py if it is a package"
+    cfg = get_config()
+    if "lib_name" in cfg:
+        package_name = cfg["lib_name"]
+        version = cfg["version"]
+        if os.path.exists(package_name):
+            init_path = os.path.join(package_name, "__init__.py")
+            if not os.path.exists(init_path):
+                print("No __init__.py file found. Generating it")
+                with open(init_path, "w") as f:
+                    f.write(f'__version__ = "{version}"')
+            else:
+                with open(init_path, "r") as f:
+                    init_lines = f.readlines()
+                has_version = max([True if "__version__" in line else False for line in init_lines])
+                if has_version:
+                    print("Updating __version__ in __ini__.py")
+                    update_init_lines = [
+                        re.sub(r'__version__ = ".*"', f'__version__ = "{version}"', line)
+                        for line in init_lines
+                    ]
+                else:
+                    update_init_lines += [f'\n__version__ = "version"']
+                update_init = "".join(update_init_lines)
+                with open(init_path, "w") as f:
+                    f.write(update_init)
