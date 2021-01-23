@@ -13,6 +13,9 @@ entries:
       title: gh
       url: gh.html
     - output: web,pdf
+      title: pypi
+      url: pypi.html
+    - output: web,pdf
       title: conda
       url: conda.html
     - output: web,pdf
