@@ -13,8 +13,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 from urllib.parse import urlparse
-from fastcore.test import test_eq
-from fastcore.script import call_parse, Param, store_true
 from .utils import get_config, read_credentials, check_project_root, get_template, check_git_dir
 
 # Cell
@@ -124,9 +122,7 @@ def get_gh_config():
     return gh_config
 
 # Cell
-@call_parse
-def make_gh_release(draft: Param(help="Is this a release draft?", type=store_true)=False,
-                    prerelease: Param(help="Is this a prerelease?", type=store_true)=False):
+def make_gh_release(draft=False, prerelease=False):
     "Make a GitHub release. Indicate if there is a `draft` or a `prerelease` with default False both"
     cfg = get_config()  # package config
     gh_user, gh_token = get_gh_credentials()
@@ -148,7 +144,9 @@ def make_gh_release(draft: Param(help="Is this a release draft?", type=store_tru
         "prerelease": prerelease
     }
     gh_api_url = f"https://api.github.com/repos/{repo_name}/releases"
-    print("Creating GitHub release")
+    draft_msg = " draft" if draft else ""
+    prerelease_msg = "pre-" if prerelease else ""
+    print(f"Creating GitHub {prerelease_msg}release{draft_msg}")
     r = requests.post(
         url=gh_api_url, data=json.dumps(gh_data), auth=HTTPBasicAuth(gh_user, gh_token)
     )
