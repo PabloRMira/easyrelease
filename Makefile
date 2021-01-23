@@ -25,7 +25,7 @@ prepush:
 	nbdev_build_lib && nbdev_test_nbs && nbdev_build_docs
 
 update_main: 
-	git checkout main && git pull origin main
+	git fetch && git checkout main && git pull origin main
 
 release: pypi
 	nbdev_conda_package
