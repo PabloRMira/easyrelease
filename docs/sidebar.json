@@ -2,6 +2,7 @@
   "easyrelease": {
     "Overview": "/",
     "gh": "gh.html",
+    "conda": "conda.html",
     "cli": "cli.html",
     "utils": "utils.html"
   }
