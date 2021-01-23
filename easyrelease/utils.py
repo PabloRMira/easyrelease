@@ -62,7 +62,8 @@ def update_gitignore():
     add_ignore_files = [
         ".gh-credentials",
         "conda-recipe/*",
-        "conda-bld/*"
+        "conda-bld/*",
+
     ]
     if os.path.exists(".gitignore"):
         with open(".gitignore", "r") as f:
@@ -129,16 +130,22 @@ def get_conda_env_packages():
     return packages
 
 # Cell
+@check_project_root
 def get_anaconda_credentials():
     "Get anaconda credentials from .anacondarc in your home directory"
-    anacondarc_path = os.path.join(os.path.expanduser("~"), ".anacondarc")
-    if not os.path.exists(anacondarc_path):
-        print("No .anacondarc with Anaconda credentials found in your home directory")
+    ana_file = ".anaconda-credentials"
+    user_root = os.path.expanduser("~")
+    if os.path.exists(ana_file):
+        cfg = read_credentials(ana_file)
+    elif os.path.exists(os.path.join(user_root, ana_file)):
+        cfg = read_credentials(os.path.join(user_root, ana_file))
     else:
-        config = ConfigParser(delimiters=['='])
-        config.read(anacondarc_path)
-        cfg = config['anaconda']
-        return (cfg["username"], cfg["password"])
+        raise Exception(
+            "No .anaconda-credentials file found. "
+            "Please save your anaconda credentials "
+            "either in this project's root directory or under your home directory"
+        )
+    return (cfg["username"], cfg["password"])
 
 # Cell
 def write_init_version():
