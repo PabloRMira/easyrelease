@@ -2,7 +2,7 @@
 
 __all__ = ['check_git_dir', 'check_project_root', 'read_credentials', 'get_config', 'get_template', 'update_gitignore',
            'write_settings_ini', 'write_setup_py', 'write_conda_build_scripts', 'get_conda_env_packages',
-           'get_anaconda_credentials', 'write_init_version']
+           'get_anaconda_credentials', 'get_pypi_credentials', 'write_init_version']
 
 # Cell
 import os
@@ -132,7 +132,7 @@ def get_conda_env_packages():
 # Cell
 @check_project_root
 def get_anaconda_credentials():
-    "Get anaconda credentials from .anacondarc in your home directory"
+    "Get anaconda credentials from .anaconda-credentials in your home or project root directory"
     ana_file = ".anaconda-credentials"
     user_root = os.path.expanduser("~")
     if os.path.exists(ana_file):
@@ -143,6 +143,24 @@ def get_anaconda_credentials():
         raise Exception(
             "No .anaconda-credentials file found. "
             "Please save your anaconda credentials "
+            "either in this project's root directory or under your home directory"
+        )
+    return (cfg["username"], cfg["password"])
+
+# Cell
+@check_project_root
+def get_pypi_credentials():
+    "Get pypi credentials from .pypi-credentials in your home or project root directory"
+    pypi_file = ".pypi-credentials"
+    user_root = os.path.expanduser("~")
+    if os.path.exists(pypi_file):
+        cfg = read_credentials(pypi_file)
+    elif os.path.exists(os.path.join(user_root, pypi_file)):
+        cfg = read_credentials(os.path.join(user_root, pypi_file))
+    else:
+        raise Exception(
+            "No .pypi-credentials file found. "
+            "Please save your pypi credentials "
             "either in this project's root directory or under your home directory"
         )
     return (cfg["username"], cfg["password"])
