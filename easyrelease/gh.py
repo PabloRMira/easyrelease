@@ -48,7 +48,7 @@ def write_gh_template():
         print(".gh-release-config.yaml already exists. Skipping this step")
     else:
         template = get_template("gh-release-config-template.yaml")
-        template = "\n".join(template.split())  # remove redundant whitespaces
+        template = "\n".join(template.split("\n"))  # remove redundant whitespaces
         with open(".gh-release-config.yaml", "w") as f:
             f.write(template)
 
