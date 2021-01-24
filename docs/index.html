@@ -31,6 +31,15 @@ nb_path: "nbs/index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://pypi.org/project/easyrelease/#description"><img src="https://img.shields.io/pypi/v/easyrelease?color=yellow&amp;label=pypi%20version" alt="PyPI"></a>
+<a href="https://anaconda.org/pablormira/easyrelease"><img src="https://anaconda.org/pablormira/easyrelease/badges/version.svg" alt="conda"></a>
+<a href="https://anaconda.org/pablormira/easyrelease"><img src="https://anaconda.org/pablormira/easyrelease/badges/platforms.svg" alt="plattform"></a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="How-to-install">How to install<a class="anchor-link" href="#How-to-install"> </a></h2>
 </div>
 </div>
@@ -98,6 +107,11 @@ nb_path: "nbs/index.ipynb"
 <div class="highlight"><pre><span></span><span class="na">username</span> <span class="o">=</span> <span class="s">Your Anaconda username</span>
 <span class="na">password</span> <span class="o">=</span> <span class="s">Your Anaconda password</span>
 </pre></div>
+<h4 id="CONDA_BLD_PATH">CONDA_BLD_PATH<a class="anchor-link" href="#CONDA_BLD_PATH"> </a></h4><blockquote><p>Only for Linux users and only in case of problems</p>
+</blockquote>
+<p>In case of problems concerning permission errors building your package via <code>build-conda-package</code> you may need to add the following line to your <code>~/.bashrc</code></p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CONDA_BLD_PATH</span><span class="o">=</span>/tmp/conda-bld
+</pre></div>
 
 </div>
 </div>
@@ -111,6 +125,11 @@ nb_path: "nbs/index.ipynb"
 <li>Edit your in the previous step generated file <code>settings.ini</code></li>
 <li>Edit your in the previous step generated file <code>.gh-release-config.yaml</code></li>
 </ol>
+<p><code>.gh-release-config.yaml</code> sets the title and keyword that will be used to assign your commits to a certain section in your GitHub release notes and changelog. So if for example you want all commits to be in your release notes without keyword matching, you could modify <code>.gh-release-config.yaml</code> as</p>
+<div class="highlight"><pre><span></span><span class="nt">gh_categories</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;###</span><span class="nv"> </span><span class="s">Commits:&quot;</span>
+    <span class="nt">keyword</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</pre></div>
 <p>Each time you want to make a GitHub release:</p>
 <ol>
 <li>Run <code>gh-release</code> to make a GitHub release</li>
@@ -136,6 +155,41 @@ nb_path: "nbs/index.ipynb"
 <li>Run <code>build-conda-package</code> to build your conda package</li>
 <li>Run <code>upload-conda-package</code> to publish your conda package</li>
 </ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Versioning">Versioning<a class="anchor-link" href="#Versioning"> </a></h2><p>We version our package via <a href="https://semver.org">semantic versioning</a>, i.e.,</p>
+<ul>
+<li>We use three digits separated by points x1.x2.x3, e.g. 0.5.1</li>
+<li>We increase x1 (the major version) if we introduce breaking changes<ul>
+<li>Exception: Versions with 0 at the beginning (e.g. 0.5.1) mean that the package is not stable yet and therefore every new feature could be a breaking change</li>
+</ul>
+</li>
+<li>We increase x2 (the minor version) if we introduce a new feature</li>
+<li>We increase x3 (the patch version) if we fix a bug</li>
+</ul>
+<p>New documentation, refactoring / maintenance of code and admin tasks do not change the versions.</p>
+<p>You can follow the changes introduced by each version in our <a href="https://github.com/PabloRMira/easyrelease/blob/main/CHANGELOG.md">CHANGELOG</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Differences-to-fastrelease">Differences to <a href="https://github.com/fastai/fastrelease">fastrelease</a><a class="anchor-link" href="#Differences-to-fastrelease"> </a></h2><p>This package was inspired by the <a href="https://github.com/fastai/fastrelease">fastrelease</a> package but it differs from it in the way it generates the release notes.</p>
+<p><code>easyrelease</code> generates the release notes out of the commit messages whereas <code>fastrelease</code> generates the release notes out of GitHub issues.</p>
+<p>This package was also motivated by the fact that <code>fastrelease</code> did not work for me out of the box in my first attempt and I really liked the idea of automating releases and package publishing.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compatibility-with-nbdev">Compatibility with <a href="https://github.com/fastai/nbdev">nbdev</a><a class="anchor-link" href="#Compatibility-with-nbdev"> </a></h2><p>This package was developed and is compatible with the <a href="https://github.com/fastai/nbdev">nbdev</a> framework but it also works for ordinary project development without notebooks.</p>
+<p>In the case you want to develop your project with <code>nbdev</code> you need to first initialize your project via <code>nbdev</code> and afterwards run <code>easyrelease-init</code>. This is because the <code>settings.ini</code> we initialize for your project is a proper / strict subset of the <code>settings.ini</code> from <code>nbdev</code></p>
 
 </div>
 </div>

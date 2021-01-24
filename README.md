@@ -2,6 +2,10 @@
 > Automate your GitHub, pypi and conda releases
 
 
+[![PyPI](https://img.shields.io/pypi/v/easyrelease?color=yellow&label=pypi%20version)](https://pypi.org/project/easyrelease/#description)
+[![conda](https://anaconda.org/pablormira/easyrelease/badges/version.svg)](https://anaconda.org/pablormira/easyrelease)
+[![plattform](https://anaconda.org/pablormira/easyrelease/badges/platforms.svg)](https://anaconda.org/pablormira/easyrelease)
+
 ## How to install
 
 Via pip
@@ -82,6 +86,17 @@ username = Your Anaconda username
 password = Your Anaconda password
 ```
 
+#### CONDA_BLD_PATH
+
+> Only for Linux users and only in case of problems
+
+In case of problems concerning permission errors building your package via `build-conda-package` you may need to add the following line to your `~/.bashrc`
+
+```bash
+export CONDA_BLD_PATH=/tmp/conda-bld
+```
+
+
 ### Getting started
 
 #### For applications
@@ -92,6 +107,15 @@ Only once:
 1. Run `easyrelease-init application`
 2. Edit your in the previous step generated file `settings.ini`
 3. Edit your in the previous step generated file `.gh-release-config.yaml`
+
+`.gh-release-config.yaml` sets the title and keyword that will be used to assign your commits to a certain section in your GitHub release notes and changelog. So if for example you want all commits to be in your release notes without keyword matching, you could modify `.gh-release-config.yaml` as
+
+```yaml
+gh_categories:
+  - title: "### Commits:"
+    keyword: ""
+```
+
 
 Each time you want to make a GitHub release:
 
@@ -117,3 +141,31 @@ Each time you want to release / publish your package:
   * (Optionally recommended): Check your meta.yaml
 5. Run `build-conda-package` to build your conda package
 7. Run `upload-conda-package` to publish your conda package
+
+## Versioning
+
+We version our package via [semantic versioning](https://semver.org), i.e., 
+
+* We use three digits separated by points x1.x2.x3, e.g. 0.5.1
+* We increase x1 (the major version) if we introduce breaking changes
+  * Exception: Versions with 0 at the beginning (e.g. 0.5.1) mean that the package is not stable yet and therefore every new feature could be a breaking change
+* We increase x2 (the minor version) if we introduce a new feature
+* We increase x3 (the patch version) if we fix a bug
+
+New documentation, refactoring / maintenance of code and admin tasks do not change the versions.
+
+You can follow the changes introduced by each version in our [CHANGELOG](https://github.com/PabloRMira/easyrelease/blob/main/CHANGELOG.md)
+
+## Differences to [fastrelease](https://github.com/fastai/fastrelease)
+
+This package was inspired by the [fastrelease](https://github.com/fastai/fastrelease) package but it differs from it in the way it generates the release notes. 
+
+`easyrelease` generates the release notes out of the commit messages whereas `fastrelease` generates the release notes out of GitHub issues.
+
+This package was also motivated by the fact that `fastrelease` did not work for me out of the box in my first attempt and I really liked the idea of automating releases and package publishing.
+
+## Compatibility with [nbdev](https://github.com/fastai/nbdev)
+
+This package was developed and is compatible with the [nbdev](https://github.com/fastai/nbdev) framework but it also works for ordinary project development without notebooks.
+
+In the case you want to develop your project with `nbdev` you need to first initialize your project via `nbdev` and afterwards run `easyrelease-init`. This is because the `settings.ini` we initialize for your project is a proper / strict subset of the `settings.ini` from `nbdev`
