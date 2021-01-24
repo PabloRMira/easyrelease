@@ -132,3 +132,17 @@ Each time you want to release / publish your package:
   * (Optionally recommended): Check your meta.yaml
 5. Run `build-conda-package` to build your conda package
 7. Run `upload-conda-package` to publish your conda package
+
+## Versioning
+
+We version our package via [semantic versioning](https://semver.org), i.e., 
+
+* We use three digits separated by points x1.x2.x3, e.g. 0.5.1
+* We increase x1 (the major version) if we introduce breaking changes
+  * Exception: Versions with 0 at the beginning (e.g. 0.5.1) mean that the package is not stable yet and therefore every new feature could be a breaking change
+* We increase x2 (the minor version) if we introduce a new feature
+* We increase x3 (the patch version) if we fix a bug
+
+New documentation, refactoring / maintenance of code and admin tasks do not change the versions.
+
+You can follow the changes introduced by each version in our [CHANGELOG](https://github.com/PabloRMira/easyrelease/blob/main/CHANGELOG.md)
