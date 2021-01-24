@@ -37,7 +37,8 @@ index = {"get_repo_name": "00_gh.ipynb",
          "get_conda_env_packages": "04_utils.ipynb",
          "get_anaconda_credentials": "04_utils.ipynb",
          "get_pypi_credentials": "04_utils.ipynb",
-         "write_init_version": "04_utils.ipynb"}
+         "write_init_version": "04_utils.ipynb",
+         "run_tests": "04_utils.ipynb"}
 
 modules = ["gh.py",
            "pypi.py",

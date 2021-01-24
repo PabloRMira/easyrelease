@@ -2,7 +2,7 @@
 
 __all__ = ['check_git_dir', 'check_project_root', 'read_credentials', 'get_config', 'get_template', 'update_gitignore',
            'write_settings_ini', 'write_setup_py', 'write_conda_build_scripts', 'get_conda_env_packages',
-           'get_anaconda_credentials', 'get_pypi_credentials', 'write_init_version']
+           'get_anaconda_credentials', 'get_pypi_credentials', 'write_init_version', 'run_tests']
 
 # Cell
 import os
@@ -193,3 +193,26 @@ def write_init_version():
                 update_init = "".join(update_init_lines)
                 with open(init_path, "w") as f:
                     f.write(update_init)
+
+# Cell
+def run_tests(func):
+    "Run pytest or nbdev_test_nbs before calling function"
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        cfg = get_config()
+        if os.path.exists("tests"):
+            print("Running pytests")
+            exit_code = subprocess.run(["pytest", "tests"]).returncode
+        elif "lib_name" in cfg:
+            package_name = cfg["lib_name"]
+            nbdev_file = os.path.join(package_name, "_nbdev.py")
+            if os.path.exists(nbdev_file):
+                print("Running nbdev_test_nbs")
+                exit_code = subprocess.run(["nbdev_test_nbs"]).returncode
+        else:
+            print("Neither tests folder nor nbdev project found. Skipping tests")
+            exit_code = 0
+        if exit_code != 0:
+            raise Exception("Tests failed! Aborting next steps")
+        return func(*args, **kwargs)
+    return wrapper

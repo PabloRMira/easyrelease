@@ -9,7 +9,8 @@ from .utils import (
     write_settings_ini,
     write_setup_py,
     write_conda_build_scripts,
-    update_gitignore
+    update_gitignore,
+    run_tests
 )
 from .gh import write_gh_template, make_gh_release
 
@@ -33,6 +34,7 @@ def init_configs():
         write_conda_build_scripts()
 
 # Cell
+@run_tests
 def make_gh_release_cli():
     "CLI for making GitHub releases"
     parser = argparse.ArgumentParser(description="Make a GitHub release")

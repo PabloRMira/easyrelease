@@ -11,7 +11,8 @@ from .utils import (
     get_template,
     get_config,
     get_conda_env_packages,
-    get_anaconda_credentials
+    get_anaconda_credentials,
+    run_tests
 )
 
 # Cell
@@ -41,6 +42,7 @@ def update_meta_yaml():
         yaml.dump(meta_yaml, f, sort_keys=False)
 
 # Cell
+@run_tests
 def build_conda_package():
     "Build conda package"
     exit_code = subprocess.run(

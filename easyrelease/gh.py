@@ -13,7 +13,13 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 from urllib.parse import urlparse
-from .utils import get_config, read_credentials, check_project_root, get_template, check_git_dir
+from .utils import (
+    get_config,
+    read_credentials,
+    check_project_root,
+    get_template,
+    check_git_dir,
+)
 
 # Cell
 def get_repo_name(git_url):

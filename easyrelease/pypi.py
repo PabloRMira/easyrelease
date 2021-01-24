@@ -6,7 +6,7 @@ __all__ = ['clean_dist', 'build_pypi_package', 'publish_pypi_package', 'build_an
 import os
 import shutil
 import subprocess
-from .utils import check_project_root, get_pypi_credentials
+from .utils import check_project_root, get_pypi_credentials, run_tests
 
 # Cell
 @check_project_root
@@ -31,6 +31,7 @@ def publish_pypi_package():
     )
 
 # Cell
+@run_tests
 def build_and_publish_pypi():
     "Build and publish pypi package"
     clean_dist()
