@@ -1,5 +1,10 @@
 # Release notes
 
+## 0.2.2
+
+### :tada: Bugfixes:
+* [FIX] Missing requirement twine ([#27](https://github.com/PabloRMira/easyrelease/pull/27))
+
 ## 0.2.1
 
 ### :tada: Bugfixes:
