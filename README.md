@@ -163,3 +163,9 @@ This package was inspired by the [fastrelease](https://github.com/fastai/fastrel
 `easyrelease` generates the release notes out of the commit messages whereas `fastrelease` generates the release notes out of GitHub issues.
 
 This package was also motivated by the fact that `fastrelease` did not work for me out of the box in my first attempt and I really liked the idea of automating releases and package publishing.
+
+## Compatibility with [nbdev](https://github.com/fastai/nbdev)
+
+This package was developed and is compatible with the [nbdev](https://github.com/fastai/nbdev) framework but it also works for ordinary project development without notebooks.
+
+In the case you want to develop your project with `nbdev` you need to first initialize your project via `nbdev` and afterwards run `easyrelease-init`. This is because the `settings.ini` we initialize for your project is a proper / strict subset of the `settings.ini` from `nbdev`
