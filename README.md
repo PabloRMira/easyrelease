@@ -2,6 +2,10 @@
 > Automate your GitHub, pypi and conda releases
 
 
+[![PyPI](https://img.shields.io/pypi/v/easyrelease?color=yellow&label=pypi%20version)](https://pypi.org/project/easyrelease/#description)
+[![conda](https://anaconda.org/pablormira/easyrelease/badges/version.svg)](https://anaconda.org/pablormira/easyrelease)
+[![plattform](https://anaconda.org/pablormira/easyrelease/badges/platforms.svg)](https://anaconda.org/pablormira/easyrelease)
+
 ## How to install
 
 Via pip
