@@ -22,7 +22,7 @@ def init_configs():
         "project_type",
         help="Either application or package"
     )
-    project_type = parser.parse_args()
+    project_type = parser.parse_args().project_type
     # validate input
     if project_type not in ("application", "package"):
         raise Exception(f"Input project_type {project_type} is not valid")
