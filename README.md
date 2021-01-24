@@ -134,13 +134,13 @@ Only once:
 
 Each time you want to release / publish your package:
 
-1. Run `gh-release` to make a GitHub release
-2. Run `make-changelog` to generate / update your CHANGELOG
-3. Run `publish-pypi-package` to publish to pypi
-4. Run `update-meta-yaml` to generate / update your meta.yaml under conda-bld
+1. Run `publish-pypi-package` to publish to pypi
+2. Run `update-meta-yaml` to generate / update your meta.yaml under conda-bld
   * (Optionally recommended): Check your meta.yaml
-5. Run `build-conda-package` to build your conda package
-7. Run `upload-conda-package` to publish your conda package
+3. Run `build-conda-package` to build your conda package
+4. Run `upload-conda-package` to publish your conda package
+5. Run `gh-release` to make a GitHub release
+6. Run `make-changelog` to generate / update your CHANGELOG
 
 ## Versioning
 
