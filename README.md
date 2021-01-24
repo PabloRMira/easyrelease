@@ -86,6 +86,17 @@ username = Your Anaconda username
 password = Your Anaconda password
 ```
 
+#### CONDA_BLD_PATH
+
+> Only for Linux users and only in case of problems
+
+In case of problems concerning permission errors building your package via `build-conda-package` you may need to add the following line to your `~/.bashrc`
+
+```bash
+export CONDA_BLD_PATH=/tmp/conda-bld
+```
+
+
 ### Getting started
 
 #### For applications

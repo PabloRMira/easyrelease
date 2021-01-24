@@ -107,6 +107,11 @@ nb_path: "nbs/index.ipynb"
 <div class="highlight"><pre><span></span><span class="na">username</span> <span class="o">=</span> <span class="s">Your Anaconda username</span>
 <span class="na">password</span> <span class="o">=</span> <span class="s">Your Anaconda password</span>
 </pre></div>
+<h4 id="CONDA_BLD_PATH">CONDA_BLD_PATH<a class="anchor-link" href="#CONDA_BLD_PATH"> </a></h4><blockquote><p>Only for Linux users and only in case of problems</p>
+</blockquote>
+<p>In case of problems concerning permission errors building your package via <code>build-conda-package</code> you may need to add the following line to your <code>~/.bashrc</code></p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CONDA_BLD_PATH</span><span class="o">=</span>/tmp/conda-bld
+</pre></div>
 
 </div>
 </div>
