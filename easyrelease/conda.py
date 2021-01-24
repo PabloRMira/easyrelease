@@ -46,7 +46,7 @@ def update_meta_yaml():
 def build_conda_package():
     "Build conda package"
     exit_code = subprocess.run(
-        ["conda-build", "conda-recipe", "--output-folder", "./conda-bld", "--build-only"]
+        ["conda-build", "conda-recipe", "--output-folder", "./conda-bld", "--no-anaconda-upload"]
     ).returncode
     return exit_code
 
