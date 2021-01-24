@@ -125,6 +125,11 @@ nb_path: "nbs/index.ipynb"
 <li>Edit your in the previous step generated file <code>settings.ini</code></li>
 <li>Edit your in the previous step generated file <code>.gh-release-config.yaml</code></li>
 </ol>
+<p><code>.gh-release-config.yaml</code> sets the title and keyword that will be used to assign your commits to a certain section in your GitHub release notes and changelog. So if for example you want all commits to be in your release notes without keyword matching, you could modify <code>.gh-release-config.yaml</code> as</p>
+<div class="highlight"><pre><span></span><span class="nt">gh_categories</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">title</span><span class="p">:</span> <span class="s">&quot;###</span><span class="nv"> </span><span class="s">Commits:&quot;</span>
+    <span class="nt">keyword</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</pre></div>
 <p>Each time you want to make a GitHub release:</p>
 <ol>
 <li>Run <code>gh-release</code> to make a GitHub release</li>
@@ -168,6 +173,15 @@ nb_path: "nbs/index.ipynb"
 </ul>
 <p>New documentation, refactoring / maintenance of code and admin tasks do not change the versions.</p>
 <p>You can follow the changes introduced by each version in our <a href="https://github.com/PabloRMira/easyrelease/blob/main/CHANGELOG.md">CHANGELOG</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Differences-to-fastrelease">Differences to <a href="https://github.com/fastai/fastrelease">fastrelease</a><a class="anchor-link" href="#Differences-to-fastrelease"> </a></h2><p>This package was inspired by the <a href="https://github.com/fastai/fastrelease">fastrelease</a> package but it differs from it in the way it generates the release notes.</p>
+<p><code>easyrelease</code> generates the release notes out of the commit messages whereas <code>fastrelease</code> generates the release notes out of GitHub issues.</p>
+<p>This package was also motivated by the fact that <code>fastrelease</code> did not work for me out of the box in my first attempt and I really liked the idea of automating releases and package publishing.</p>
 
 </div>
 </div>

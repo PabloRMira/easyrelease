@@ -108,6 +108,15 @@ Only once:
 2. Edit your in the previous step generated file `settings.ini`
 3. Edit your in the previous step generated file `.gh-release-config.yaml`
 
+`.gh-release-config.yaml` sets the title and keyword that will be used to assign your commits to a certain section in your GitHub release notes and changelog. So if for example you want all commits to be in your release notes without keyword matching, you could modify `.gh-release-config.yaml` as
+
+```yaml
+gh_categories:
+  - title: "### Commits:"
+    keyword: ""
+```
+
+
 Each time you want to make a GitHub release:
 
 1. Run `gh-release` to make a GitHub release
@@ -146,3 +155,11 @@ We version our package via [semantic versioning](https://semver.org), i.e.,
 New documentation, refactoring / maintenance of code and admin tasks do not change the versions.
 
 You can follow the changes introduced by each version in our [CHANGELOG](https://github.com/PabloRMira/easyrelease/blob/main/CHANGELOG.md)
+
+## Differences to [fastrelease](https://github.com/fastai/fastrelease)
+
+This package was inspired by the [fastrelease](https://github.com/fastai/fastrelease) package but it differs from it in the way it generates the release notes. 
+
+`easyrelease` generates the release notes out of the commit messages whereas `fastrelease` generates the release notes out of GitHub issues.
+
+This package was also motivated by the fact that `fastrelease` did not work for me out of the box in my first attempt and I really liked the idea of automating releases and package publishing.
