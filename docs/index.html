@@ -37,7 +37,106 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Via pip</p>
+<p><code>pip install easyrelease</code></p>
+<p>or via conda</p>
+<p><code>conda install easyrelease</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Packages-vs-Application">Packages vs Application<a class="anchor-link" href="#Packages-vs-Application"> </a></h2><p>We conceptually differentiate between two kind of projects:</p>
+<ul>
+<li>Packages: These are python projects you want to bundle for others to install via <code>pip</code> or <a href="/easyrelease/conda.html"><code>conda</code></a></li>
+<li>Applications: These are python projects without packaging purposes like a web application. You can still use this package for this kind of projects in order to automate your release workflow</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prerequisites">Prerequisites<a class="anchor-link" href="#Prerequisites"> </a></h3><p>After installation you need the fulfill the following prerequisites for the package to work:</p>
+<h4 id="Git-project">Git project<a class="anchor-link" href="#Git-project"> </a></h4><p>You need to initialize a git project in your project root folder for this package to work, i.e. run in your command line</p>
+<p><code>git init</code></p>
+<h4 id="GitHub-credentials">GitHub credentials<a class="anchor-link" href="#GitHub-credentials"> </a></h4><p>You need to store your GitHub credentials (GitHub username and token) in your project root for automatic GitHub releases. The credentials should be stored in a file called <code>.gh-credentials</code> with the following contents:</p>
+<div class="highlight"><pre><span></span><span class="na">gh_user</span> <span class="o">=</span> <span class="s">Your GitHub username</span>
+<span class="na">gh_token</span> <span class="o">=</span> <span class="s">Your GitHub token</span>
+</pre></div>
+<h4 id="Package-structure">Package structure<a class="anchor-link" href="#Package-structure"> </a></h4><blockquote><p>Only for python packages</p>
+</blockquote>
+<p>For this package to work you need to comply to the following minimal project structure for python packages</p>
+
+<pre><code>package_name
+|-- .git
+|-- package_name
+|   |-- __init__.py
+|   |-- module1.py
+|   |-- module2.py
+|   |-- ...
+|-- tests
+|   |-- test_module1.py
+|   |-- test_module2.py
+|   |-- ...</code></pre>
+<h4 id="Pypi-credentials">Pypi credentials<a class="anchor-link" href="#Pypi-credentials"> </a></h4><blockquote><p>Only for python packages</p>
+</blockquote>
+<p>To publish to Pypi you need to store your pypi credentials in a file with the name <code>.pypi-credentials</code> in your user root or project root directory. The file should include the following contents</p>
+<div class="highlight"><pre><span></span><span class="na">username</span> <span class="o">=</span> <span class="s">Your Pypi username</span>
+<span class="na">password</span> <span class="o">=</span> <span class="s">Your Pypi password</span>
+</pre></div>
+<h4 id="Anaconda-credentials">Anaconda credentials<a class="anchor-link" href="#Anaconda-credentials"> </a></h4><blockquote><p>Only for python packages</p>
+</blockquote>
+<p>To publish to Anaconda you need to store your anaconda credentials in a file with the name <code>.anaconda-credentials</code> in your user root or project root directory. The file should include the following contents</p>
+<div class="highlight"><pre><span></span><span class="na">username</span> <span class="o">=</span> <span class="s">Your Anaconda username</span>
+<span class="na">password</span> <span class="o">=</span> <span class="s">Your Anaconda password</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-started">Getting started<a class="anchor-link" href="#Getting-started"> </a></h3><h4 id="For-applications">For applications<a class="anchor-link" href="#For-applications"> </a></h4><p>Only once:</p>
+<ol>
+<li>Fulfill the <a href="#prerequisites">prerequisites</a></li>
+<li>Run <code>easyrelease-init application</code></li>
+<li>Edit your in the previous step generated file <code>settings.ini</code></li>
+<li>Edit your in the previous step generated file <code>.gh-release-config.yaml</code></li>
+</ol>
+<p>Each time you want to make a GitHub release:</p>
+<ol>
+<li>Run <code>gh-release</code> to make a GitHub release</li>
+<li>Run <code>make-changelog</code> to generate / update your CHANGELOG</li>
+</ol>
+<h4 id="For-packages">For packages<a class="anchor-link" href="#For-packages"> </a></h4><p>Only once:</p>
+<ol>
+<li>Fulfill the <a href="#prerequisites">prerequisites</a></li>
+<li>Run <code>easyrelease-init application</code></li>
+<li>Edit your in the previous step generated file <code>settings.ini</code></li>
+<li>Edit your in the previous step generated file <code>.gh-release-config.yaml</code></li>
+<li>Run <code>login-to-anaconda</code></li>
+</ol>
+<p>Each time you want to release / publish your package:</p>
+<ol>
+<li>Run <code>gh-release</code> to make a GitHub release</li>
+<li>Run <code>make-changelog</code> to generate / update your CHANGELOG</li>
+<li>Run <code>publish-pypi-package</code> to publish to pypi</li>
+<li>Run <code>update-meta-yaml</code> to generate / update your meta.yaml under conda-bld<ul>
+<li>(Optionally recommended): Check your meta.yaml</li>
+</ul>
+</li>
+<li>Run <code>build-conda-package</code> to build your conda package</li>
+<li>Run <code>upload-conda-package</code> to publish your conda package</li>
+</ol>
+
 </div>
 </div>
 </div>
