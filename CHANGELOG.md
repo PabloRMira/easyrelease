@@ -1,5 +1,13 @@
 # Release notes
 
+## 0.2.1
+
+### :tada: Bugfixes:
+* [FIX] conda-build with option --build-only does not output package to project folder ([#22](https://github.com/PabloRMira/easyrelease/pull/22))
+
+### :bulb: Documentation:
+* [DOC] Add documentation ([#26](https://github.com/PabloRMira/easyrelease/pull/26))
+
 ## 0.2.0
 
 ### :rocket: New features:
