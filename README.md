@@ -14,7 +14,7 @@ Via pip
 
 or via conda
 
-`conda install easyrelease`
+`conda install -c pablormira easyrelease`
 
 ## Packages vs Application
 
