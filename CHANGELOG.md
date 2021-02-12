@@ -1,5 +1,15 @@
 # Release notes
 
+## 0.2.4
+
+### :tada: Bugfixes:
+* [FIX] build-conda-package not working bug ([#34](https://github.com/PabloRMira/easyrelease/pull/34))
+* [FIX] .gh-release-config.yaml not written properly ([#31](https://github.com/PabloRMira/easyrelease/pull/31))
+
+### :bulb: Documentation:
+* [DOC] Correct wrong conda installation hint
+* [DOC] Adjust package release workflow
+
 ## 0.2.3
 
 ### :tada: Bugfixes:
