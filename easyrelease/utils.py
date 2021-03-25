@@ -87,7 +87,7 @@ def write_settings_ini(project_type):
     else:
         temp_name = "settings_template.ini" if project_type == "package" else "settings_slim_template.ini"
         template = get_template(temp_name)
-        with open("settings.ini") as f:
+        with open("settings.ini", "w") as f:
             f.write(template)
 
 # Cell
@@ -99,7 +99,7 @@ def write_setup_py():
         print("setup.py already exists. Skipping this step")
     else:
         template = get_template("setup_template.py")
-        with open("setup.py") as f:
+        with open("setup.py", "w") as f:
             f.write(template)
 
 # Cell
