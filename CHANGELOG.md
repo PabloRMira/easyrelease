@@ -1,5 +1,10 @@
 # Release notes
 
+## 0.2.5
+
+### :tada: Bugfixes:
+* [FIX] Error when using easyrelease-init package ([#38](https://github.com/PabloRMira/easyrelease/pull/38))
+
 ## 0.2.4
 
 ### :tada: Bugfixes:
