@@ -111,13 +111,25 @@ def get_gh_credentials():
 
 # Cell
 def get_tags():
-    "Get git tags as list"
-    return (
-        subprocess.run(["git", "tag", "-l"], capture_output=True)
+    "Get git tags as list. If multiple tags in one commit, then it puts them into a tuple"
+    commit_tags = (
+        subprocess.run(["git", "show-ref", "--tags"], capture_output=True)
         .stdout.decode("utf")
         .strip()
         .split("\n")
     )
+    commit_tags = [
+        (commit_hash, tag.split("/")[-1])
+        for t in commit_tags
+        for commit_hash, tag in [t.split()]
+    ]
+    out_tags = []
+    for i, (comhash, tag) in enumerate(commit_tags):
+        if i > 0 and comhash == commit_tags[i-1][0]:
+            out_tags[-1] += " / " + tag
+        else:
+            out_tags.append(tag)
+    return out_tags
 
 # Cell
 @check_project_root
@@ -170,7 +182,9 @@ def make_changelog():
     changelog_title = "# Release notes"
     reports = []
     for from_tag, to in zip(tags[:-1], tags[1:]):
-        commit_msgs = get_commit_msgs(from_tag=from_tag, to=to)
+        from_tag_adj = from_tag.split(" / ")[0]  # adjusted for potential multiple tags for one commit
+        to_tag_adj = to.split(" / ")[0]  # adjusted for potential multiple tags for one commit
+        commit_msgs = get_commit_msgs(from_tag=from_tag_adj, to=to_tag_adj)
         reports.append(release_report(report_title=f"## {to}", commit_msgs=commit_msgs, gh_config=gh_config))
     changelog = changelog_title + "\n\n" + "\n\n".join(reports[::-1])
     with open("CHANGELOG.md", "w") as f:
